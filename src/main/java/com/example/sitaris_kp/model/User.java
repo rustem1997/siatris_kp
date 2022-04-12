@@ -52,11 +52,11 @@ public class User {
 
     @OneToMany(mappedBy = "userRecommendation")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private Set<Recommendations> recommendationsUser;
+    private Set<Recommendations<R, Number>> recommendationsUser;
 
     @OneToMany(mappedBy = "employer")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private Set<Recommendations> employerRecommendation;
+    private Set<Recommendations<R, Number>> employerRecommendation;
 
     @OneToMany(mappedBy = "userInterview")
     @LazyCollection(LazyCollectionOption.FALSE)

@@ -59,6 +59,6 @@ public class Company {
     private List<Vacancy> vacancyList;
 
     @OneToMany(targetEntity = Recommendations.class, mappedBy = "companyUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Recommendations> recommendationsCompany;
+    private Set<Recommendations<R, Number>> recommendationsCompany;
 }
 

@@ -13,14 +13,14 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-public interface CompanyRepository extends CrudRepository<Company, Long> {
+public interface CompanyRepository extends CrudRepository<Company, Long> { // запрос Company по Id
 
     Page<Company> findAll(Pageable pageable);
 
     @Query("FROM Company c WHERE c.name LIKE %:searchText% OR c.areaOfWork LIKE %:searchText%")
     Page<Company> findAllCompany(Pageable pageable, @Param("searchText") String searchText);
 
-    Set<Company> findAll();
+    Set<Company> findAll(); //запросить все объекты в базе данных
 
     Set<Company> findCompanyByUserSetId(Long Id);
 
