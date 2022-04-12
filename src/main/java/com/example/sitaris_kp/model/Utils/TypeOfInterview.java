@@ -5,6 +5,16 @@ public enum TypeOfInterview {
     CALL("Созвон"),
     IN_OFFICE("В офисе");
 
-    TypeOfInterview() {
+    private final String name;
+
+    TypeOfInterview(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "TypeOfInterview{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

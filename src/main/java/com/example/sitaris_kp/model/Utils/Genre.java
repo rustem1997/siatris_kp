@@ -6,8 +6,17 @@ import lombok.Getter;
 public enum Genre {
     MALE("Мужчина"),
     FEMALE("Женщина");
+    private final String name;
 
-    Genre() {
+    Genre(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }
 
