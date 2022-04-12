@@ -20,6 +20,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "company")
+//класс сущности Company
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

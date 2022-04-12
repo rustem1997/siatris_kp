@@ -10,8 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.Set;
-
+import java.util.Set
 @Repository
 public interface CompanyRepository extends CrudRepository<Company, Long> { // запрос Company по Id
 

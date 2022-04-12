@@ -6,6 +6,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface RecommendationRepository extends Recommendations<Recommendations, Long> {
+
+
+
     Page<Recommendations> findAllByUserRecommendation(Pageable pageable, User user);
     Page<Recommendations> findAllByEmployer(Pageable pageable, User user);
 
