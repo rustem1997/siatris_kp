@@ -1,5 +1,6 @@
 package com.example.sitaris_kp.service;
 
+import com.example.sitaris_kp.dto.RecommendationDto;
 import com.example.sitaris_kp.exception.ResourceNotFoundException;
 import com.example.sitaris_kp.model.Company;
 import com.example.sitaris_kp.model.Recommendations;

@@ -11,10 +11,4 @@ public enum TypeOfInterview {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "TypeOfInterview{" +
-                "name='" + name + '\'' +
-                '}';
-    }
 }

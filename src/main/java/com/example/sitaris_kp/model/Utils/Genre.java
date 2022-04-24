@@ -11,12 +11,5 @@ public enum Genre {
     Genre(String name) {
         this.name = name;
     }
-
-    @Override
-    public String toString() {
-        return "Genre{" +
-                "name='" + name + '\'' +
-                '}';
-    }
 }
 

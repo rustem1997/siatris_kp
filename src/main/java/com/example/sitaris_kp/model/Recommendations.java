@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.codehaus.jackson.annotate.JsonIgnore;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,4 +41,4 @@ public class Recommendations {
     @JsonIgnore
     @JoinColumn(name = "employer_id")
     private User employer;
-
+}

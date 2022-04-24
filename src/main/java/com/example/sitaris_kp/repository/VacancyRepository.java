@@ -1,6 +1,7 @@
 package com.example.sitaris_kp.repository;
 
 import com.example.sitaris_kp.model.Company;
+import com.example.sitaris_kp.model.Utils.VacancyStatus;
 import com.example.sitaris_kp.model.Vacancy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,11 +17,11 @@ public interface VacancyRepository extends CrudRepository<Vacancy, Long> {
 
     List<Vacancy> findAllByCompanyVacancy(Company company);
 
-
+    Page<Vacancy> findAllByCompanyVacancyAndVacancyStatus(Pageable pageable, Company company, VacancyStatus vacancyStatus);
 
     Vacancy findByCompanyVacancy(Company company);
 
-
+    Page<Vacancy> findAllByVacancyStatus(Pageable pageable, VacancyStatus vacancyStatus);
 
     Page<Vacancy> findVacancyByUsersId(Long userId, Pageable pageable);
 

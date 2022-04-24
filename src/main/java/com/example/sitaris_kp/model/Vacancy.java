@@ -1,10 +1,12 @@
 package com.example.sitaris_kp.model;
 
 
+import com.example.sitaris_kp.model.Utils.VacancyStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
