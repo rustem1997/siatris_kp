@@ -19,7 +19,7 @@ import java.time.LocalDate;
 public class InterviewService {
     private final InterviewRepository interviewRepository;
     private final UserService userService;
-    private final VacancyService vacancyService;
+    private final com.interview.service.VacancyService vacancyService;
 
     public Page<Interview> findAllInterviewByUserId(Pageable pageable, Long id){
         return interviewRepository.findInterviewsByUserInterviewId(pageable, id);

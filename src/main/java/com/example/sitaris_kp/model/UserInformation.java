@@ -29,8 +29,9 @@ public class UserInformation {
     private String age;
 
     @Lob
-    @Column(columnDefinition = "Blob", name = "account_image")
-    private Byte[] account_image;
+    @Column(columnDefinition = "BLOB", name = "account_image")
+    private byte[] accountImage;
+
     @Column(name = "phone_number")
     private String phoneNumber;
     @OneToOne

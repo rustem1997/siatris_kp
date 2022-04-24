@@ -10,6 +10,6 @@ import org.springframework.data.repository.CrudRepository;
 //Наследоваться от одного из интерфейсов Spring Data, от CrudRepository
 public interface InterviewRepository extends CrudRepository<Interview, Long> { // запрос Interview по Id
     Page<Interview> findInterviewsByUserInterviewId(Pageable Pageable, Long idUser);
-    Page<Interview> findInterviewsByUserVacancyInterviewId(Pageable Pageable, Long idvacancy);
+    Page<Interview> findInterviewsByVacancyInterviewId(Pageable pageable, Long idvacancy);
     Page<Interview> findInterviewsByVacancyInterviewIdAndResolve(Pageable pageable, Long idvacancy, String statusOnResolve);
 }

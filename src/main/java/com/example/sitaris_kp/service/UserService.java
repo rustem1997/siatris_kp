@@ -4,10 +4,7 @@ import com.example.sitaris_kp.exception.ResourceNotFoundException;
 import com.example.sitaris_kp.model.User;
 
 import com.example.sitaris_kp.repository.UserRepository;
-import com.example.sitaris_kp.repository.User;
-import com.interview.exception.ResourceNotFoundException;
-import com.interview.model.User;
-import com.interview.repository.UserRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;

@@ -6,10 +6,12 @@ import com.example.sitaris_kp.model.UserInformation;
 import com.example.sitaris_kp.repository.UserInformationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
+@Service
 public class UserInformationService {
     @Autowired
     private UserInformationRepository userInformationRepository;
@@ -17,7 +19,7 @@ public class UserInformationService {
     @Autowired
     private UserService userService;
 
-    public void saveAccountImage(MultipartFile file, Long id) throws IOException {
+    public void saveAccountImage(MultipartFile file,Long id) throws IOException {
         UserInformation userInformation = findByIdUser(id);
         userInformation.setAccountImage(file.getBytes());
         userInformationRepository.save(userInformation);
@@ -60,4 +62,6 @@ public class UserInformationService {
         userInformation.setUserId(userInformation1.getUserId());
         return userInformationRepository.save(userInformation);
     }
+
+
 }
