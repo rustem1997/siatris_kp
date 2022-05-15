@@ -30,4 +30,5 @@ class VacancyRepositoryTest {
         Vacancy save = vacancyRepository.save(new Vacancy());
         Assert.assertNotNull(save);
     }
+
 }
