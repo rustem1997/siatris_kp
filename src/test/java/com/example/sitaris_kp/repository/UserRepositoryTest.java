@@ -26,9 +26,15 @@ class UserRepositoryTest {
 
     @Test
     public void testSaveUserInDB() {
-        User save = userRepository.save(new User());
+        User user = new User();
+        user.setEmail("rustem123");
+        user.setName("rustem123");
+        user.setPassword("rustem123");
+        user.setSurname("rustem123");
+        User save = userRepository.saveAndFlush(user);
         Assert.assertNotNull(save);
     }
+
 
     @Test
     public void testFindByIdNotExistingUser() {
@@ -41,5 +47,33 @@ class UserRepositoryTest {
         List<User> all = userRepository.findAll();
         Assert.assertNotNull(all);
     }
+    @Test
+    public void authTrue() {
+        String login = "admin";
+        String password = "$2a$10$QnrIKkpdWBnRjlz1vJOAyuWvvOD6dKLHhd.PgypSlNpGXyJjCkrHu";
+        int count = 0;
+        List<User> users = userRepository.findAll();
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getEmail().equals(login) && users.get(i).getPassword().equals(password)) {
+                count++;
+                break;
+            }
+        }
+        assertEquals(count,1);
+    }
 
+    @Test
+    public void authFalse() {
+        String login = "rustem";
+        String password = "12345";
+        int count = 0;
+        List<User> users = userRepository.findAll();
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getEmail().equals(login) && users.get(i).getPassword().equals(password)) {
+                count++;
+                break;
+            }
+        }
+        assertEquals(count,1);
+    }
 }
