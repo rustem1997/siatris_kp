@@ -1,8 +1,8 @@
-package com.example.sitaris_kp.repository;
+package com.example.sitaris_kp.service;
 
 import com.example.sitaris_kp.model.Company;
 import com.example.sitaris_kp.model.User;
-import com.example.sitaris_kp.service.CompanyService;
+import com.example.sitaris_kp.repository.CompanyRepository;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,13 +14,14 @@ import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 import java.util.Set;
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class CompanyRepositoryTest {
+@Transactional
+class CompanyServiceTest {
     @Autowired
-
     private CompanyRepository companyRepository;
 
     @Autowired
@@ -31,7 +32,7 @@ public class CompanyRepositoryTest {
 
     @Before
     public void init() {
-        System.out.println("Работает тетс класса " + CompanyRepositoryTest.class.getName());
+        System.out.println("Работает тетс класса " + CompanyServiceTest.class.getName());
         company = Company.builder()
                 .name("new")
                 .areaOfWork("area")
@@ -45,15 +46,16 @@ public class CompanyRepositoryTest {
                 .surname("123")
                 .password("123")
                 .build();
+
     }
     @After
     public void endTest() {
-        System.out.println("Тест класс " + CompanyRepositoryTest.class.getName() + " отработал");
+        System.out.println("Тест класс " + CompanyServiceTest.class.getName() + " отработал");
     }
 
     @Test
     @Rollback
-    public void testCreateNewCompanyWhenAllValuesFilled() {
+    public void testCreateNewCompanyWhenAllValuesFilled() { //Добавление компании с заполнеными полями
         companyRepository.save(company);
         Set<Company> all = companyRepository.findAll();
         Assert.assertTrue(all.contains(company));
@@ -61,7 +63,7 @@ public class CompanyRepositoryTest {
 
     @Test(expected = Exception.class)
     @Rollback
-    public void testCreateNewCompanyWhenNotAllValuesFilled() {
+    public void testCreateNewCompanyWhenNotAllValuesFilled() {  //Добавление компании с незаполнеными полями
         company.setAreaOfWork(null);
         companyRepository.save(company);
         Set<Company> all = companyRepository.findAll();
@@ -82,13 +84,13 @@ public class CompanyRepositoryTest {
 
     @Test(expected = Exception.class)
     @Rollback
-    public void testHireNewEmployeeToCompanyWhenCompanyNotExists() {
+    public void testHireNewEmployeeToCompanyWhenCompanyNotExists() {    //Отказ на собеседовании
         service.addEmployer(user, 0L);
     }
 
     @Test
     @Rollback
-    public void testHireNewEmployeeToCompanyWhenCompanyExists() {
+    public void testHireNewEmployeeToCompanyWhenCompanyExists() {      //Одобрение на собеседовании
         Company company = service.addEmployer(user, 1L);
         Assert.assertNotNull(company.getId());
     }
@@ -97,7 +99,7 @@ public class CompanyRepositoryTest {
     @Rollback
     public void testDismissEmployerWhenCompanyAndEmployer() {
         service.dismissEmployer(1L, 1L);
-    }
+    }   //Уволить сотрудника
 
     @Test(expected = Exception.class)
     @Rollback
@@ -118,4 +120,6 @@ public class CompanyRepositoryTest {
         Company companyAfter = service.updateCompany(company);
         Assert.assertNotNull(companyAfter.getId());
     }
+
+
 }
